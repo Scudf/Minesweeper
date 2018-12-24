@@ -69,14 +69,24 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)build\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)build\$(Configuration)\</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>E:\cpp_workspace\extern\Box2D;E:\cpp_workspace\extern\glew\include;E:\cpp_workspace\extern\glfw\include;E:\cpp_workspace\extern\glm\include;E:\cpp_workspace\extern\libpng\include;E:\cpp_workspace\extern\squall_1.48\c\include;E:\cpp_workspace\extern\tinyxml2\include;E:\cpp_workspace\extern\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>E:\cpp_workspace\extern\Box2D\Build\bin\x86\Debug;E:\cpp_workspace\extern\glew\build\vc17\Debug;E:\cpp_workspace\extern\glfw\build\vc17\src\Debug;E:\cpp_workspace\extern\glm\build\vc17\glm\Debug;E:\cpp_workspace\extern\libpng\build\vc17\Debug;E:\cpp_workspace\extern\squall_1.48\c\lib;E:\cpp_workspace\extern\tinyxml2\build\vc17\Debug;E:\cpp_workspace\extern\zlib\build\vc17\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;Box2D.lib;glew.lib;glfw3.lib;glm_static.lib;libpng16_staticd.lib;libpng16d.lib;Squalld.lib;tinyxml2d.lib;zlibd.lib;zlibstaticd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -94,10 +104,13 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>E:\cpp_workspace\extern\Box2D;E:\cpp_workspace\extern\glew\include;E:\cpp_workspace\extern\glfw\include;E:\cpp_workspace\extern\glm\include;E:\cpp_workspace\extern\libpng\include;E:\cpp_workspace\extern\squall_1.48\c\include;E:\cpp_workspace\extern\tinyxml2\include;E:\cpp_workspace\extern\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>E:\cpp_workspace\extern\Box2D\Build\bin\x86\Release;E:\cpp_workspace\extern\glew\build\vc17\Release;E:\cpp_workspace\extern\glfw\build\vc17\src\Release;E:\cpp_workspace\extern\glm\build\vc17\glm\Release;E:\cpp_workspace\extern\libpng\build\vc17\Release;E:\cpp_workspace\extern\squall_1.48\c\lib;E:\cpp_workspace\extern\tinyxml2\build\vc17\Release;E:\cpp_workspace\extern\zlib\build\vc17\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;Box2D.lib;glew.lib;glfw3.lib;glm_static.lib;libpng16_static.lib;libpng16.lib;Squall.lib;tinyxml2.lib;zlib.lib;zlibstatic.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -115,6 +128,83 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Button.cpp" />
+    <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\Cell.cpp" />
+    <ClCompile Include="src\Counter.cpp" />
+    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\GameObj.cpp" />
+    <ClCompile Include="src\GameScene.cpp" />
+    <ClCompile Include="src\GraphicObj.cpp" />
+    <ClCompile Include="src\GraphicScene.cpp" />
+    <ClCompile Include="src\Minesweeper.cpp" />
+    <ClCompile Include="src\Model.cpp" />
+    <ClCompile Include="src\pngLoader.cpp" />
+    <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\SoundManager.cpp" />
+    <ClCompile Include="src\stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Button.h" />
+    <ClInclude Include="src\Camera.h" />
+    <ClInclude Include="src\Cell.h" />
+    <ClInclude Include="src\Counter.h" />
+    <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\GameObj.h" />
+    <ClInclude Include="src\GameScene.h" />
+    <ClInclude Include="src\GraphicObj.h" />
+    <ClInclude Include="src\GraphicScene.h" />
+    <ClInclude Include="src\Model.h" />
+    <ClInclude Include="src\pngLoader.h" />
+    <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\SoundManager.h" />
+    <ClInclude Include="src\stdafx.h" />
+    <ClInclude Include="src\targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shaders\mixShaderF.glsl" />
+    <None Include="res\shaders\normalsShaderF.glsl" />
+    <None Include="res\shaders\normalsShaderV.glsl" />
+    <None Include="res\shaders\simpleShaderF.glsl" />
+    <None Include="res\shaders\simpleShaderV.glsl" />
+    <None Include="res\shaders\texturesShaderF.glsl" />
+    <None Include="res\shaders\texturesShaderV.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="res\sounds\explosion.mp3" />
+    <Media Include="res\sounds\main.mp3" />
+    <Media Include="res\sounds\win.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\Beginner.png" />
+    <Image Include="res\textures\Bomb.png" />
+    <Image Include="res\textures\DeadSmile.png" />
+    <Image Include="res\textures\Eight.png" />
+    <Image Include="res\textures\Exit.png" />
+    <Image Include="res\textures\Expert.png" />
+    <Image Include="res\textures\Five.png" />
+    <Image Include="res\textures\Flag.png" />
+    <Image Include="res\textures\Four.png" />
+    <Image Include="res\textures\Intermediate.png" />
+    <Image Include="res\textures\LiveSmile.png" />
+    <Image Include="res\textures\One.png" />
+    <Image Include="res\textures\Pressed.png" />
+    <Image Include="res\textures\Seven.png" />
+    <Image Include="res\textures\Six.png" />
+    <Image Include="res\textures\TEight.png" />
+    <Image Include="res\textures\TFive.png" />
+    <Image Include="res\textures\TFour.png" />
+    <Image Include="res\textures\Three.png" />
+    <Image Include="res\textures\TNine.png" />
+    <Image Include="res\textures\TOne.png" />
+    <Image Include="res\textures\TSeven.png" />
+    <Image Include="res\textures\TSix.png" />
+    <Image Include="res\textures\TThree.png" />
+    <Image Include="res\textures\TTwo.png" />
+    <Image Include="res\textures\Two.png" />
+    <Image Include="res\textures\TZero.png" />
+    <Image Include="res\textures\Unpressed.png" />
+    <Image Include="res\textures\WinnerSmile.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
