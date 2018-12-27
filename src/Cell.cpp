@@ -48,26 +48,12 @@ void Cell::changeTexture()
 		if (!m_isPressed)
 		{
 			if (m_flag)
-				m_graphicObj->setDiffuseTexture(gs->getGLTexture("Flag.png"));
+				m_graphicObj->setDiffuseTexture(gs->getGLTexture("cells/cell_f.png"));
 			else
-				m_graphicObj->setDiffuseTexture(gs->getGLTexture("Unpressed.png"));
+				m_graphicObj->setDiffuseTexture(gs->getGLTexture("cells/cell_c.png"));
 		}
 		else
-		{
-			switch (m_cellType)
-			{
-			case CellType::ONE:		m_graphicObj->setDiffuseTexture(gs->getGLTexture("One.png"));		break;
-			case CellType::TWO:		m_graphicObj->setDiffuseTexture(gs->getGLTexture("Two.png"));		break;
-			case CellType::THREE:	m_graphicObj->setDiffuseTexture(gs->getGLTexture("Three.png"));		break;
-			case CellType::FOR:		m_graphicObj->setDiffuseTexture(gs->getGLTexture("Four.png"));		break;
-			case CellType::FIVE:	m_graphicObj->setDiffuseTexture(gs->getGLTexture("Five.png"));		break;
-			case CellType::SIX:		m_graphicObj->setDiffuseTexture(gs->getGLTexture("Six.png"));		break;
-			case CellType::SEVEN:	m_graphicObj->setDiffuseTexture(gs->getGLTexture("Seven.png"));		break;
-			case CellType::EIGHT:	m_graphicObj->setDiffuseTexture(gs->getGLTexture("Eight.png"));		break;
-			case CellType::BOMB:	m_graphicObj->setDiffuseTexture(gs->getGLTexture("Bomb.png"));		break;
-			default:				m_graphicObj->setDiffuseTexture(gs->getGLTexture("Pressed.png"));	break;
-			}
-		}
+			std::string name = "cells/cell_" + std::to_string(m_cellType) + ".png";
 
 		m_isTexDirty = false;
 	}

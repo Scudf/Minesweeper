@@ -9,7 +9,7 @@ Model::Model()
 }
 
 bool Model::createModel2V(
-	const glm::vec2 &lineLenght,
+	const glm::vec2& lineLenght,
 	const glm::vec2& anchorPoint)
 {
 	std::vector<GLfloat> lineVertices;
@@ -19,6 +19,9 @@ bool Model::createModel2V(
 
 	float x2 = (1.0f - anchorPoint.x) * lineLenght.x;
 	float y2 = (1.0f - anchorPoint.y) * lineLenght.y;
+
+	m_bounds.xAxis = glm::vec2(x1, x2);
+	m_bounds.yAxis = glm::vec2(y1, y2);
 
 	lineVertices = {
 		x1,	y1,
@@ -45,6 +48,9 @@ bool Model::createModel4V(
 
 	float x2 = (1.0f - anchorPoint.x) * planeSize.x;
 	float y2 = (1.0f - anchorPoint.y) * planeSize.y;
+
+	m_bounds.xAxis = glm::vec2(x1, x2);
+	m_bounds.yAxis = glm::vec2(y1, y2);
 
 	switch (vaoConfig)
 	{
@@ -99,6 +105,10 @@ bool Model::createModel36V(
 	float x2 = (1.0f - anchorPoint.x) * cubeSize.x;
 	float y2 = (1.0f - anchorPoint.y) * cubeSize.y;
 	float z2 = (1.0f - anchorPoint.z) * cubeSize.z;
+
+	m_bounds.xAxis = glm::vec2(x1, x2);
+	m_bounds.yAxis = glm::vec2(y1, y2);
+	m_bounds.zAxis = glm::vec2(z1, z2);
 
 	switch (vaoConfig)
 	{

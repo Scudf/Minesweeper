@@ -68,27 +68,27 @@ bool GameScene::initialize()
 	gs->addObject(m_plane);
 
 	m_firstTimerNumber = GraphicObj::Create(gs->getModel("texNumber"), gs->getGLShader("texturesShader"));
-	m_firstTimerNumber->setMaterialTexture(gs->getGLTexture("TZero.png"), gs->getGLTexture("Unpressed.png"));
+	m_firstTimerNumber->setMaterialTexture(gs->getGLTexture("numbers/number_0.png"), gs->getGLTexture("cells/cell_c.png"));
 	gs->addObject(m_firstTimerNumber);
 
 	m_secondTimerNumber = GraphicObj::Create(gs->getModel("texNumber"), gs->getGLShader("texturesShader"));
-	m_secondTimerNumber->setMaterialTexture(gs->getGLTexture("TZero.png"), gs->getGLTexture("Unpressed.png"));
+	m_secondTimerNumber->setMaterialTexture(gs->getGLTexture("numbers/number_0.png"), gs->getGLTexture("cells/cell_c.png"));
 	gs->addObject(m_secondTimerNumber);
 
 	m_thirdTimerNumber = GraphicObj::Create(gs->getModel("texNumber"), gs->getGLShader("texturesShader"));
-	m_thirdTimerNumber->setMaterialTexture(gs->getGLTexture("TZero.png"), gs->getGLTexture("Unpressed.png"));
+	m_thirdTimerNumber->setMaterialTexture(gs->getGLTexture("numbers/number_0.png"), gs->getGLTexture("cells/cell_c.png"));
 	gs->addObject(m_thirdTimerNumber);
 
 	m_firstMinesNumber = GraphicObj::Create(gs->getModel("texNumber"), gs->getGLShader("texturesShader"));
-	m_firstMinesNumber->setMaterialTexture(gs->getGLTexture("TZero.png"), gs->getGLTexture("Unpressed.png"));
+	m_firstMinesNumber->setMaterialTexture(gs->getGLTexture("numbers/number_0.png"), gs->getGLTexture("cells/cell_c.png"));
 	gs->addObject(m_firstMinesNumber);
 
 	m_secondMinesNumber = GraphicObj::Create(gs->getModel("texNumber"), gs->getGLShader("texturesShader"));
-	m_secondMinesNumber->setMaterialTexture(gs->getGLTexture("TZero.png"), gs->getGLTexture("Unpressed.png"));
+	m_secondMinesNumber->setMaterialTexture(gs->getGLTexture("numbers/number_0.png"), gs->getGLTexture("cells/cell_c.png"));
 	gs->addObject(m_secondMinesNumber);
 
 	m_thirdMinesNumber = GraphicObj::Create(gs->getModel("texNumber"), gs->getGLShader("texturesShader"));
-	m_thirdMinesNumber->setMaterialTexture(gs->getGLTexture("TZero.png"), gs->getGLTexture("Unpressed.png"));
+	m_thirdMinesNumber->setMaterialTexture(gs->getGLTexture("numbers/number_0.png"), gs->getGLTexture("cells/cell_c.png"));
 	gs->addObject(m_thirdMinesNumber);
 
 	m_startButton = Button::Create(
@@ -99,7 +99,7 @@ bool GameScene::initialize()
 			m_difficultDef.m_rows * gs->getBlockSize() + gs->getBlockSize() / 2.0f,
 			0.0f),
 		ButtonType::START);
-	m_startButton->getGraphicObj()->setDiffuseTexture(gs->getGLTexture("LiveSmile.png"));
+	m_startButton->getGraphicObj()->setDiffuseTexture(gs->getGLTexture("buttons/button_start.png"));
 	m_startButton->setMinScale(0.5f);
 	addObject(m_startButton);
 
@@ -111,7 +111,7 @@ bool GameScene::initialize()
 			m_difficultDef.m_rows * gs->getBlockSize() + gs->getBlockSize() / 2.0f,
 			0.0f),
 		ButtonType::BEGINNER);
-	m_beginnerButton->getGraphicObj()->setDiffuseTexture(gs->getGLTexture("Beginner.png"));
+	m_beginnerButton->getGraphicObj()->setDiffuseTexture(gs->getGLTexture("buttons/button_beginner.png"));
 	m_beginnerButton->setMinScale(0.5f);
 	addObject(m_beginnerButton);
 
@@ -123,7 +123,7 @@ bool GameScene::initialize()
 			m_difficultDef.m_rows * gs->getBlockSize() + gs->getBlockSize() / 2.0f,
 			0.0f),
 		ButtonType::INTERMEDIATE);
-	m_intermedButton->getGraphicObj()->setDiffuseTexture(gs->getGLTexture("Intermediate.png"));
+	m_intermedButton->getGraphicObj()->setDiffuseTexture(gs->getGLTexture("buttons/button_intermediate.png"));
 	m_intermedButton->setMinScale(0.5f);
 	addObject(m_intermedButton);
 
@@ -135,7 +135,7 @@ bool GameScene::initialize()
 			m_difficultDef.m_rows * gs->getBlockSize() + gs->getBlockSize() / 2.0f,
 			0.0f),
 		ButtonType::EXPERT);
-	m_expertButton->getGraphicObj()->setDiffuseTexture(gs->getGLTexture("Expert.png"));
+	m_expertButton->getGraphicObj()->setDiffuseTexture(gs->getGLTexture("buttons/button_expert.png"));
 	m_expertButton->setMinScale(0.5f);
 	addObject(m_expertButton);
 
@@ -147,7 +147,7 @@ bool GameScene::initialize()
 			m_difficultDef.m_rows * gs->getBlockSize() + gs->getBlockSize() / 2.0f,
 			0.0f),
 		ButtonType::EXIT);
-	m_exitButton->getGraphicObj()->setDiffuseTexture(gs->getGLTexture("Exit.png"));
+	m_exitButton->getGraphicObj()->setDiffuseTexture(gs->getGLTexture("buttons/button_exit.png"));
 	m_exitButton->setMinScale(0.5f);
 	addObject(m_exitButton);
 
@@ -449,16 +449,16 @@ void GameScene::solveTimeCounter()
 
 		switch (d)
 		{
-			case 0: object->setDiffuseTexture(gs->getGLTexture("TZero.png")); break;
-			case 1: object->setDiffuseTexture(gs->getGLTexture("TOne.png")); break;
-			case 2: object->setDiffuseTexture(gs->getGLTexture("TTwo.png")); break;
-			case 3: object->setDiffuseTexture(gs->getGLTexture("TThree.png")); break;
-			case 4: object->setDiffuseTexture(gs->getGLTexture("TFour.png")); break;
-			case 5: object->setDiffuseTexture(gs->getGLTexture("TFive.png")); break;
-			case 6: object->setDiffuseTexture(gs->getGLTexture("TSix.png")); break;
-			case 7: object->setDiffuseTexture(gs->getGLTexture("TSeven.png")); break;
-			case 8: object->setDiffuseTexture(gs->getGLTexture("TEight.png")); break;
-			case 9: object->setDiffuseTexture(gs->getGLTexture("TNine.png")); break;
+			case 0: object->setDiffuseTexture(gs->getGLTexture("numbers/number_0.png")); break;
+			case 1: object->setDiffuseTexture(gs->getGLTexture("numbers/number_1.png")); break;
+			case 2: object->setDiffuseTexture(gs->getGLTexture("numbers/number_2.png")); break;
+			case 3: object->setDiffuseTexture(gs->getGLTexture("numbers/number_3.png")); break;
+			case 4: object->setDiffuseTexture(gs->getGLTexture("numbers/number_4.png")); break;
+			case 5: object->setDiffuseTexture(gs->getGLTexture("numbers/number_5.png")); break;
+			case 6: object->setDiffuseTexture(gs->getGLTexture("numbers/number_6.png")); break;
+			case 7: object->setDiffuseTexture(gs->getGLTexture("numbers/number_7.png")); break;
+			case 8: object->setDiffuseTexture(gs->getGLTexture("numbers/number_8.png")); break;
+			case 9: object->setDiffuseTexture(gs->getGLTexture("numbers/number_9.png")); break;
 		}
 
 		seconds /= 10;
@@ -487,16 +487,16 @@ void GameScene::solveMineCounter()
 
 		switch (d)
 		{
-			case 0: object->setDiffuseTexture(gs->getGLTexture("TZero.png")); break;
-			case 1: object->setDiffuseTexture(gs->getGLTexture("TOne.png")); break;
-			case 2: object->setDiffuseTexture(gs->getGLTexture("TTwo.png")); break;
-			case 3: object->setDiffuseTexture(gs->getGLTexture("TThree.png")); break;
-			case 4: object->setDiffuseTexture(gs->getGLTexture("TFour.png")); break;
-			case 5: object->setDiffuseTexture(gs->getGLTexture("TFive.png")); break;
-			case 6: object->setDiffuseTexture(gs->getGLTexture("TSix.png")); break;
-			case 7: object->setDiffuseTexture(gs->getGLTexture("TSeven.png")); break;
-			case 8: object->setDiffuseTexture(gs->getGLTexture("TEight.png")); break;
-			case 9: object->setDiffuseTexture(gs->getGLTexture("TNine.png")); break;
+			case 0: object->setDiffuseTexture(gs->getGLTexture("numbers/number_0.png")); break;
+			case 1: object->setDiffuseTexture(gs->getGLTexture("numbers/number_1.png")); break;
+			case 2: object->setDiffuseTexture(gs->getGLTexture("numbers/number_2.png")); break;
+			case 3: object->setDiffuseTexture(gs->getGLTexture("numbers/number_3.png")); break;
+			case 4: object->setDiffuseTexture(gs->getGLTexture("numbers/number_4.png")); break;
+			case 5: object->setDiffuseTexture(gs->getGLTexture("numbers/number_5.png")); break;
+			case 6: object->setDiffuseTexture(gs->getGLTexture("numbers/number_6.png")); break;
+			case 7: object->setDiffuseTexture(gs->getGLTexture("numbers/number_7.png")); break;
+			case 8: object->setDiffuseTexture(gs->getGLTexture("numbers/number_8.png")); break;
+			case 9: object->setDiffuseTexture(gs->getGLTexture("numbers/number_9.png")); break;
 		}
 
 		bombs /= 10;
@@ -523,7 +523,7 @@ bool GameScene::processGameButtons(int r, int c)
 				{
 				case ButtonType::START:
 					resetLevel();
-					object->getGraphicObj()->setDiffuseTexture(Game::GetInstancePtr()->getGraphicScene()->getGLTexture("LiveSmile.png"));
+					object->getGraphicObj()->setDiffuseTexture(Game::GetInstancePtr()->getGraphicScene()->getGLTexture("buttons/button_win.png"));
 					break;
 
 				case ButtonType::BEGINNER:
@@ -630,7 +630,7 @@ void GameScene::markBombs()
 {
 	Game::GetInstancePtr()->getSoundManager()->playSound3D("res/sounds/win.mp3");
 
-	m_startButton->getGraphicObj()->setDiffuseTexture(Game::GetInstancePtr()->getGraphicScene()->getGLTexture("WinnerSmile.png"));
+	m_startButton->getGraphicObj()->setDiffuseTexture(Game::GetInstancePtr()->getGraphicScene()->getGLTexture("buttons/button_win.png"));
 
 	for (int r = 0; r < m_difficultDef.m_rows; ++r)
 		for (int c = 0; c < m_difficultDef.m_columns; ++c)
@@ -646,7 +646,7 @@ void GameScene::showBombs()
 {
 	Game::GetInstancePtr()->getSoundManager()->playSound3D("res/sounds/explosion.mp3");
 
-	m_startButton->getGraphicObj()->setDiffuseTexture(Game::GetInstancePtr()->getGraphicScene()->getGLTexture("DeadSmile.png"));
+	m_startButton->getGraphicObj()->setDiffuseTexture(Game::GetInstancePtr()->getGraphicScene()->getGLTexture("buttons/button_start.png"));
 
 	for (int r = 0; r < m_difficultDef.m_rows; ++r)
 		for (int c = 0; c < m_difficultDef.m_columns; ++c)

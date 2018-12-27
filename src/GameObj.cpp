@@ -18,7 +18,7 @@ GameObj::GameObj(
 	GraphicScene* gs = Game::GetInstancePtr()->getGraphicScene();
 
 	m_graphicObj = GraphicObj::Create(model, shader, position);
-	m_graphicObj->setMaterialTexture(gs->getGLTexture("Unpressed.png"), gs->getGLTexture("Unpressed.png"));
+	m_graphicObj->setMaterialTexture(gs->getGLTexture("cells/cell_c.png"), gs->getGLTexture("cells/cell_c.png"));
 	gs->addObject(m_graphicObj);
 }
 

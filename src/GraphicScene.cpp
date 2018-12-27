@@ -74,35 +74,26 @@ bool GraphicScene::initialize()
 
 	m_camera = Camera::Create();
 
-	loadTexture("Flag.png");
-	loadTexture("One.png");
-	loadTexture("Two.png");
-	loadTexture("Three.png");
-	loadTexture("Four.png");
-	loadTexture("Five.png");
-	loadTexture("Six.png");
-	loadTexture("Seven.png");
-	loadTexture("Eight.png");
-	loadTexture("Bomb.png");
-	loadTexture("Unpressed.png");
-	loadTexture("Pressed.png");
-	loadTexture("LiveSmile.png");
-	loadTexture("DeadSmile.png");
-	loadTexture("WinnerSmile.png");
-	loadTexture("Beginner.png");
-	loadTexture("Intermediate.png");
-	loadTexture("Expert.png");
-	loadTexture("Exit.png");
-	loadTexture("TZero.png");
-	loadTexture("TOne.png");
-	loadTexture("TTwo.png");
-	loadTexture("TThree.png");
-	loadTexture("TFour.png");
-	loadTexture("TFive.png");
-	loadTexture("TSix.png");
-	loadTexture("TSeven.png");
-	loadTexture("TEight.png");
-	loadTexture("TNine.png");
+	loadTexture("buttons/button_beginner.png");
+	loadTexture("buttons/button_exit.png");
+	loadTexture("buttons/button_expert.png");
+	loadTexture("buttons/button_intermediate.png");
+	loadTexture("buttons/button_lose.png");
+	loadTexture("buttons/button_start.png");
+	loadTexture("buttons/button_win.png");
+
+	loadTexture("cells/cell_c.png");
+	loadTexture("cells/cell_f.png");
+
+	std::string path;
+
+	for (int i = 0; i < 10; ++i) {
+		path = "cells/cell_" + std::to_string(i) + ".png";
+		loadTexture(path);
+
+		path = "numbers/number_" + std::to_string(i) + ".png";
+		loadTexture(path);
+	}
 
 	loadShader("simpleShader", "simpleShaderV.glsl", "simpleShaderF.glsl");
 	loadShader("normalsShader", "normalsShaderV.glsl", "normalsShaderF.glsl");
@@ -165,46 +156,33 @@ void GraphicScene::loadTexture(const std::string &imagePath)
 	m_textures[imagePath] = textureID;
 }
 
+void GraphicScene::loadShader(
+	const std::string& shaderName,
+	const std::string& vertexFileName,
+	const std::string& fragmentFileName)
+{
+	std::string prefix = "../res/shaders/";
 
+	ShaderPtr shader = Shader::Create(
+		(prefix + vertexFileName).c_str(),
+		(prefix + fragmentFileName).c_str());
+
+	m_shaders[shaderName] = shader;
+}
 
 void GraphicScene::loadModels()
 {
-	// Line
-	ModelPtr lineModel = Model::Create();
-	lineModel->createModel2V(glm::vec2(12800.0f, 0.0f));
-	m_models["line"] = lineModel;
-
 	// Plane
 	ModelPtr normPlaneModel = Model::Create();
 	normPlaneModel->createModel4V(NORMALS, glm::vec2(m_blockSize, m_blockSize));
 	m_models["normPlane"] = normPlaneModel;
 
-	ModelPtr texPlaneModel = Model::Create();
-	texPlaneModel->createModel4V(TEXTURES, glm::vec2(m_blockSize, m_blockSize));
-	m_models["texPlane"] = texPlaneModel;
-
 	// Cube
-	ModelPtr simpCubeModel = Model::Create();
-	simpCubeModel->createModel36V(SIMPLE, glm::vec3(m_blockSize, m_blockSize, m_blockSize));
-	m_models["simpCube"] = simpCubeModel;
-
-	ModelPtr normCubeModel = Model::Create();
-	normCubeModel->createModel36V(NORMALS, glm::vec3(m_blockSize, m_blockSize, m_blockSize));
-	m_models["normCube"] = normCubeModel;
-
 	ModelPtr texCubeModel = Model::Create();
 	texCubeModel->createModel36V(TEXTURES, glm::vec3(m_blockSize, m_blockSize, m_blockSize));
 	m_models["texCube"] = texCubeModel;
 
 	// Cell
-	ModelPtr simpCellModel = Model::Create();
-	simpCellModel->createModel36V(SIMPLE, glm::vec3(90.0f, 90.0f, 60.0f), glm::vec3(0.5f, 0.5f, 0.0f));
-	m_models["simpCell"] = simpCellModel;
-
-	ModelPtr normCellModel = Model::Create();
-	normCellModel->createModel36V(NORMALS, glm::vec3(90.0f, 90.0f, 60.0f), glm::vec3(0.5f, 0.5f, 0.0f));
-	m_models["normCell"] = normCellModel;
-
 	ModelPtr texCellModel = Model::Create();
 	texCellModel->createModel36V(TEXTURES, glm::vec3(90.0f, 90.0f, 60.0f), glm::vec3(0.5f, 0.5f, 0.0f));
 	m_models["texCell"] = texCellModel;
@@ -213,16 +191,6 @@ void GraphicScene::loadModels()
 	ModelPtr texNumberModel = Model::Create();
 	texNumberModel->createModel36V(TEXTURES, glm::vec3(30.0f, 90.0f, 60.0f), glm::vec3(0.5f, 0.5f, 0.0f));
 	m_models["texNumber"] = texNumberModel;
-}
-
-void GraphicScene::loadShader(
-	const std::string& shaderName,
-	const std::string& vertexFileName,
-	const std::string& fragmentFileName)
-{
-	std::string prefix = "../res/shaders/";
-	ShaderPtr shader = Shader::Create((prefix + vertexFileName).c_str(), (prefix + fragmentFileName).c_str());
-	m_shaders[shaderName] = shader;
 }
 
 void GraphicScene::addObject(const GraphicObjPtr& object)

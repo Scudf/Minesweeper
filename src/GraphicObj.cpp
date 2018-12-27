@@ -129,7 +129,6 @@ void GraphicObj::render()
 	case ModelType::V2:	glDrawElements(GL_LINES, 2, GL_UNSIGNED_INT, lineInd); break;
 	case ModelType::V4: glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, planeInd); break;
 	case ModelType::V36: glDrawArrays(GL_TRIANGLES, 0, 36); break;
-	case ModelType::V72: glDrawArrays(GL_TRIANGLES, 0, 72); break;
 	}
 }
 

@@ -19,8 +19,7 @@ enum class ModelType
 {
 	V2,
 	V4,
-	V36,
-	V72
+	V36
 };
 
 enum Metric
@@ -45,6 +44,19 @@ struct TexCoords
 		, leftUV(0.0f, 0.0f, 1.0f, 1.0f)
 		, frontUV(0.0f, 0.0f, 1.0f, 1.0f)
 		, backUV(0.0f, 0.0f, 1.0f, 1.0f)
+	{}
+};
+
+struct Bounds
+{
+	glm::vec2 xAxis;
+	glm::vec2 yAxis;
+	glm::vec2 zAxis;
+
+	Bounds()
+		: xAxis(0)
+		, yAxis(0)
+		, zAxis(0)
 	{}
 };
 
@@ -77,6 +89,8 @@ public:
 	inline VAOconfig getVAOConfig() const { return m_vaoConfig; }
 	inline ModelType getModelType() const { return m_modelType; }
 
+	inline Bounds getBounds() const { return m_bounds; }
+
 private:
 	void createVAO(
 		const std::vector<GLfloat> &vector,
@@ -90,5 +104,7 @@ private:
 
 	VAOconfig m_vaoConfig;
 	ModelType m_modelType;
+
+	Bounds m_bounds;
 };
 
